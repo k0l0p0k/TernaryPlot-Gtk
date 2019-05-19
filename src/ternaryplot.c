@@ -22,8 +22,11 @@
 #include <string.h>
 
 #include "ternaryplot.h"
-#include "ternaryplot-marshallers.h"
-
+//#include "ternaryplot-marshallers.h"
+// генерируется автоматически ??
+// без него ошибка: ternaryplot.c:104:23: error: ‘ternaryplot_marshal_VOID__DOUBLE_DOUBLE_DOUBLE’ undeclared
+// ternaryplot_marshal_VOID__DOUBLE_DOUBLE_DOUBLE -> NULL
+// компилируется и работает, на что влияет ??
 #define GETTEXT_PACKAGE "ternaryplot"
 #include <glib/gi18n.h>
 
@@ -101,7 +104,7 @@ static void ternary_plot_class_init (TernaryPlotClass *class)
                       G_SIGNAL_RUN_LAST,
                       G_STRUCT_OFFSET (TernaryPlotClass, point_changed),
                       NULL, NULL,
-                      ternaryplot_marshal_VOID__DOUBLE_DOUBLE_DOUBLE,
+                      NULL,//ternaryplot_marshal_VOID__DOUBLE_DOUBLE_DOUBLE,
                       G_TYPE_NONE, 3,
                       G_TYPE_DOUBLE, G_TYPE_DOUBLE, G_TYPE_DOUBLE);
 
